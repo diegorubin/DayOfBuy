@@ -2,6 +2,7 @@ AC_INIT([DayOfBuy],[0.1],[rubin.diego@gmail.com])
 AM_INIT_AUTOMAKE(dob,0.1)
 AC_PROG_CC
 AC_PROG_CXX
+PKG_CHECK_MODULES([DOB],[gtkmm-2.4 >= 2.20])
 AC_PROG_INSTALL
 AC_CONFIG_FILES([Makefile])
 AC_OUTPUT
