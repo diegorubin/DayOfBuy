@@ -7,7 +7,7 @@ AM_CPPFLAGS = ${DOB_CFLAGS}
 
 bin_PROGRAMS = dob
 
-dob_SOURCES = src/main.cc
+dob_SOURCES = src/main.cc src/win-main.cc
 
 dob_LDADD = ${DOB_LIBS}
 

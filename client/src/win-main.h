@@ -1,6 +1,6 @@
 /* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*- */
 /*
- * main.cc
+ * scrum-clock
  * Copyright (C) Diego Rubin 2010 <rubin.diego@gmail.com>
  * 
  * scrum-clock is free software: you can redistribute it and/or modify it
@@ -17,24 +17,44 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <gtkmm.h>
+#ifndef _WIN_MAIN_H_
+#define _WIN_MAIN_H_
+
 #include <iostream>
-#include "win-main.h"
+#include <gtkmm.h>
 
-#ifdef ENABLE_NLS
-#  include <libintl.h>
-#endif
+using namespace Gtk;
 
-   
-int
-main (int argc, char *argv[])
+class WinMain: public Gtk::Window 
 {
-	Gtk::Main kit(argc, argv);
-	Glib::RefPtr<Gtk::StatusIcon> systray = Gtk::StatusIcon::create_from_file("../shared/imgs/icon.png");
+public:
+	WinMain();
+	virtual ~WinMain();
+
+	void set_systray(Glib::RefPtr<Gtk::StatusIcon> tray);
+protected:
+
+private:
+
+	// attributes
+	bool showed;
+	Glib::RefPtr<Gtk::StatusIcon> systray;
+
+	// main menu
+	Glib::RefPtr<Gtk::ActionGroup> actMenu;
+	Glib::RefPtr<Gtk::UIManager> uimMenu;
+	Glib::RefPtr<Gtk::ListStore> treModel;
+
+	// menu widgets
+	VBox vbxMenu;
 	
-	WinMain winMain;
-	winMain.set_systray(systray);
-		
-	kit.run();
-	return 0;
-}
+	Table tblMain;
+
+	// callback methods
+	virtual void on_systray_activate();
+	// callback methods - menu
+	virtual void on_menu_file_quit();
+	
+};
+
+#endif // _WIN_MAIN_H_
