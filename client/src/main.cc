@@ -30,7 +30,7 @@ int
 main (int argc, char *argv[])
 {
 	Gtk::Main kit(argc, argv);
-	Glib::RefPtr<Gtk::StatusIcon> systray = Gtk::StatusIcon::create_from_file("../shared/imgs/icon.png");
+	Glib::RefPtr<Gtk::StatusIcon> systray = Gtk::StatusIcon::create_from_file("../shared/imgs/icon12_5.png");
 	
 	WinMain winMain;
 	winMain.set_systray(systray);
