@@ -1,14 +1,14 @@
 /* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*- */
 /*
- * scrum-clock
+ * DayOfBuy 
  * Copyright (C) Diego Rubin 2010 <rubin.diego@gmail.com>
  * 
- * scrum-clock is free software: you can redistribute it and/or modify it
+ * DayOfBuy is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
  * Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
- * scrum-clock is distributed in the hope that it will be useful, but
+ * DayOfBuy is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
@@ -37,6 +37,8 @@ WinMain::WinMain()
 	
 	actMenu->add(Gtk::Action::create("FileMenu","Arquivo"));
 	actMenu->add(Gtk::Action::create("FileQuit",Gtk::Stock::QUIT),sigc::mem_fun(*this, &WinMain::on_menu_file_quit));
+	actMenu->add(Gtk::Action::create("EditMenu","Editar"));
+	actMenu->add(Gtk::Action::create("EditPreferences",Gtk::Stock::PREFERENCES),sigc::mem_fun(*this,&WinMain::on_menu_edit_preferences));
 	
 	uimMenu = Gtk::UIManager::create();
 	uimMenu->insert_action_group(actMenu);
@@ -50,6 +52,9 @@ WinMain::WinMain()
 		" 			<separator/>"
 		" 			<menuitem action='FileQuit'/>"
 		" 		</menu>"
+		"       <menu action='EditMenu'>"
+		"           <menuitem action='EditPreferences'/>"
+		"       </menu>"
 		"	</menubar>"
 		"</ui>";
 	
@@ -110,5 +115,11 @@ void WinMain::on_systray_activate()
 void WinMain::on_menu_file_quit()
 {
 	Gtk::Main::quit();
+}
+
+void WinMain::on_menu_edit_preferences()
+{
+    win_preferences = new WinPreferences();
+    win_preferences->show();
 }
 

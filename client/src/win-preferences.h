@@ -17,49 +17,21 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _WIN_MAIN_H_
-#define _WIN_MAIN_H_
+#ifndef _WIN_PREFERENCES_H_
+#define _WIN_PREFERENCES_H_
 
-#include <iostream>
 #include <gtkmm.h>
-
-#include "win-preferences.h"
 
 using namespace Gtk;
 
-class WinMain: public Gtk::Window 
+class WinPreferences: public Gtk::Window
 {
 public:
-	WinMain();
-	virtual ~WinMain();
-
-	void set_systray(Glib::RefPtr<Gtk::StatusIcon> tray);
+    WinPreferences();
+    virtual ~WinPreferences();
 protected:
 
 private:
-
-	// attributes
-	bool showed;
-	Glib::RefPtr<Gtk::StatusIcon> systray;
-
-	// main menu
-	Glib::RefPtr<Gtk::ActionGroup> actMenu;
-	Glib::RefPtr<Gtk::UIManager> uimMenu;
-	Glib::RefPtr<Gtk::ListStore> treModel;
-
-	// menu widgets
-	VBox vbxMenu;
-	
-	Table tblMain;
-
-	// callback methods
-	virtual void on_systray_activate();
-	// callback methods - menu
-	virtual void on_menu_file_quit();
-	virtual void on_menu_edit_preferences();
-
-    // dialogs
-    WinPreferences *win_preferences;
 };
 
-#endif // _WIN_MAIN_H_
+#endif // WIN_PREFERENCES_H_
