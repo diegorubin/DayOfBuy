@@ -23,7 +23,7 @@
 #include <iostream>
 #include <gtkmm.h>
 
-#include "win-preferences.h"
+#include "dialog-preferences.h"
 
 using namespace Gtk;
 
@@ -59,7 +59,7 @@ private:
 	virtual void on_menu_edit_preferences();
 
     // dialogs
-    WinPreferences *win_preferences;
+    DialogPreferences *dlgPreferences;
 };
 
 #endif // _WIN_MAIN_H_

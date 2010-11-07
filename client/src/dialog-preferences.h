@@ -24,14 +24,25 @@
 
 using namespace Gtk;
 
-class WinPreferences: public Gtk::Window
+class DialogPreferences: public Gtk::Dialog
 {
 public:
-    WinPreferences();
-    virtual ~WinPreferences();
+    DialogPreferences();
+    virtual ~DialogPreferences();
 protected:
 
 private:
+    // attributes
+    Notebook notPreferences;
+    Button *btnOk;
+    Button *btnCancel;
+
+    // page 1 - server
+    Table tblServer;
+    Label lblHost;
+    Entry entHost;
+    Label lblPort;
+    Entry entPort;
 };
 
 #endif // WIN_PREFERENCES_H_
