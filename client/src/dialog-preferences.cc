@@ -5,6 +5,8 @@ DialogPreferences::DialogPreferences(Config configs)
     lblHost("Endereço IP: "),
     lblPort("Porta: ")
 {
+    this->configs = configs;
+
     VBox *vbxPreferences = this->get_vbox();
 
     set_title("Preferências - Day Of Buy");
@@ -46,5 +48,9 @@ void DialogPreferences::on_button_cancel_clicked()
 
 void DialogPreferences::on_button_ok_clicked()
 {
+    configs.host = entHost.get_text();
+    configs.port = entPort.get_text();
+    configs.save();
+    delete this;
 }
 

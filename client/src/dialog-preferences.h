@@ -34,6 +34,7 @@ protected:
 
 private:
     // attributes
+    Config configs;
     Notebook notPreferences;
     Button *btnOk;
     Button *btnCancel;

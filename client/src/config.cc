@@ -28,5 +28,11 @@ bool Config::save()
     file.open(config_file.c_str(), std::ios::out);
 
     if(!file.is_open()) return false;
+
+    file << "[host]:" << host << "\n";
+    file << "[port]:" << port << "\n";
+
+    file.close();
+    return true;
 }
 
