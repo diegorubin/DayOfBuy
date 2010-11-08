@@ -2,6 +2,9 @@
 
 Config::Config()
 {
+    host = "127.0.0.1";
+    port = "7777";
+
     config_file = getenv("HOME");
     config_file.append("/.dobrc");
 }
@@ -15,12 +18,15 @@ Config::~Config()
 {
 }
 
-void Config::default_config()
-{
-    
-}
-
 bool Config::config_file_exists()
 {
+}
+
+bool Config::save()
+{
+    ofstream file;
+    file.open(config_file.c_str(), std::ios::out);
+
+    if(!file.is_open()) return false;
 }
 

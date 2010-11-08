@@ -21,13 +21,14 @@
 #define _WIN_PREFERENCES_H_
 
 #include <gtkmm.h>
+#include "config.h"
 
 using namespace Gtk;
 
 class DialogPreferences: public Gtk::Dialog
 {
 public:
-    DialogPreferences();
+    DialogPreferences(Config configs);
     virtual ~DialogPreferences();
 protected:
 

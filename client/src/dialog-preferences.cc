@@ -1,6 +1,6 @@
 #include "dialog-preferences.h"
 
-DialogPreferences::DialogPreferences()
+DialogPreferences::DialogPreferences(Config configs)
 :   tblServer(2,2,false),
     lblHost("Endereço IP: "),
     lblPort("Porta: ")
@@ -20,6 +20,9 @@ DialogPreferences::DialogPreferences()
     btnOk = add_button(Stock::OK,RESPONSE_OK);
 
     // page 1 - server
+    entHost.set_text(configs.host);
+    entPort.set_text(configs.port);
+
     tblServer.attach(lblHost,0,1,0,1,FILL,FILL,0,0);
     tblServer.attach(entHost,1,2,0,1,FILL,FILL,0,0);
     tblServer.attach(lblPort,0,1,1,2,FILL,FILL,0,0);

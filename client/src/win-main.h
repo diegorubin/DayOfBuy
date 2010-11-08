@@ -22,6 +22,7 @@
 
 #include <iostream>
 #include <gtkmm.h>
+#include "config.h"
 
 #include "dialog-preferences.h"
 
@@ -38,8 +39,9 @@ protected:
 
 private:
 
-	// attributes
+	// attributes	
 	bool showed;
+	Config configs;
 	Glib::RefPtr<Gtk::StatusIcon> systray;
 
 	// main menu

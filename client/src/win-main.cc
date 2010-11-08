@@ -119,7 +119,7 @@ void WinMain::on_menu_file_quit()
 
 void WinMain::on_menu_edit_preferences()
 {
-    dlgPreferences = new DialogPreferences();
+    dlgPreferences = new DialogPreferences(configs);
     dlgPreferences->run();
 }
 
