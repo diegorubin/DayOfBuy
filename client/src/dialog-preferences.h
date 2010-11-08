@@ -43,6 +43,10 @@ private:
     Entry entHost;
     Label lblPort;
     Entry entPort;
+
+    // callback methods
+    virtual void on_button_cancel_clicked();
+    virtual void on_button_ok_clicked();
 };
 
 #endif // WIN_PREFERENCES_H_

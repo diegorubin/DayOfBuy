@@ -25,10 +25,23 @@ DialogPreferences::DialogPreferences()
     tblServer.attach(lblPort,0,1,1,2,FILL,FILL,0,0);
     tblServer.attach(entPort,1,2,1,2,FILL,FILL,0,0);
 
+    // connect signals
+    btnCancel->signal_clicked().connect(sigc::mem_fun(*this,&DialogPreferences::on_button_cancel_clicked));
+    btnOk->signal_clicked().connect(sigc::mem_fun(*this,&DialogPreferences::on_button_ok_clicked));
+
     show_all();
 }
 
 DialogPreferences::~DialogPreferences()
+{
+}
+
+void DialogPreferences::on_button_cancel_clicked()
+{
+  delete this;
+}
+
+void DialogPreferences::on_button_ok_clicked()
 {
 }
 
