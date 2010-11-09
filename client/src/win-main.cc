@@ -23,6 +23,7 @@ WinMain::WinMain()
 : vbxMenu(),
   tblMain(2,2,false)
 {
+    configs.load();
 	showed = false;
 
 	set_position(Gtk::WIN_POS_MOUSE);

@@ -5,6 +5,12 @@
 #include <fstream>
 #include <stdlib.h>
 
+enum tokens {
+    T_BEGIN_ATTR = '[',
+    T_END_ATTR = ']',
+    T_END_VALUE = '\n'
+};
+
 using namespace std;
 
 class Config
@@ -22,8 +28,10 @@ public:
 
     // parse methods
     bool save();
+    bool load();
 
 private:
+    void set_value(string attr, string value);
     bool config_file_exists();
 };
 
