@@ -6,6 +6,7 @@ DialogPreferences::DialogPreferences(Config configs)
     lblPort("Porta: ")
 {
     this->configs = configs;
+    this->configs.load();
 
     VBox *vbxPreferences = this->get_vbox();
 
@@ -22,8 +23,8 @@ DialogPreferences::DialogPreferences(Config configs)
     btnOk = add_button(Stock::OK,RESPONSE_OK);
 
     // page 1 - server
-    entHost.set_text(configs.host);
-    entPort.set_text(configs.port);
+    entHost.set_text(this->configs.host);
+    entPort.set_text(this->configs.port);
 
     tblServer.attach(lblHost,0,1,0,1,FILL,FILL,0,0);
     tblServer.attach(entHost,1,2,0,1,FILL,FILL,0,0);

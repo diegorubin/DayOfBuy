@@ -59,13 +59,13 @@ bool Config::load()
             case T_END_ATTR:{
                 pos_value = 0;
                 is_value = true;
-                attr[pos_value] = '\0';
+                attr[pos_attr] = 0;
                 break;
             }
             case T_END_VALUE:{
                 is_value = false;
+                value[pos_value] = 0;
                 set_value(attr,value);
-                value[pos_value] = '\0';
                 break;
             }
             default:{
@@ -74,12 +74,13 @@ bool Config::load()
             }
         }
     }
-
+    file.close();
     return true;
 }
 
 void Config::set_value(ATTR attr, VALUE value)
 {
-    if(strcmp(attr,"host")) host = value;
+    if(!strcmp(attr,"host")) host = value;
+    if(!strcmp(attr,"port")) port = value;
 }
 
