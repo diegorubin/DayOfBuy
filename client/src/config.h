@@ -4,12 +4,16 @@
 #include <iostream>
 #include <fstream>
 #include <stdlib.h>
+#include <string.h>
 
 enum tokens {
     T_BEGIN_ATTR = '[',
     T_END_ATTR = ']',
     T_END_VALUE = '\n'
 };
+
+typedef char ATTR[255];
+typedef char VALUE[10000];
 
 using namespace std;
 
@@ -31,7 +35,7 @@ public:
     bool load();
 
 private:
-    void set_value(string attr, string value);
+    void set_value(ATTR attr, VALUE value);
     bool config_file_exists();
 };
 

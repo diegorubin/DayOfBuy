@@ -39,7 +39,8 @@ bool Config::save()
 bool Config::load()
 {
     char c;
-    char attr[255],value[10000];
+    VALUE value;
+    ATTR attr;
     int pos_attr = 0;
     int pos_value = 0;
 
@@ -58,16 +59,18 @@ bool Config::load()
             case T_END_ATTR:{
                 pos_value = 0;
                 is_value = true;
+                attr[pos_value] = '\0';
                 break;
             }
             case T_END_VALUE:{
                 is_value = false;
                 set_value(attr,value);
+                value[pos_value] = '\0';
                 break;
             }
             default:{
                 if(is_value) value[pos_value++] = c;
-                else attr[pos_attr] = c;
+                else attr[pos_attr++] = c;
             }
         }
     }
@@ -75,8 +78,8 @@ bool Config::load()
     return true;
 }
 
-void Config::set_value(string attr, string value)
+void Config::set_value(ATTR attr, VALUE value)
 {
-    if(attr == "host") host = value;
+    if(strcmp(attr,"host")) host = value;
 }
 
