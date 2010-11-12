@@ -23,6 +23,7 @@
 #include <iostream>
 #include <gtkmm.h>
 #include "config.h"
+#include "client.h"
 
 #include "dialog-preferences.h"
 
@@ -42,6 +43,7 @@ private:
 	// attributes	
 	bool showed;
 	Config configs;
+	Client client;
 	Glib::RefPtr<Gtk::StatusIcon> systray;
 
 	// main menu

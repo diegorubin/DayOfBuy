@@ -24,11 +24,14 @@ private:
   int i;
   int port;
   int server_socket;
+  int clients[];
+  int number_of_clients;
 
   struct sockaddr_in local;
 
   // methods
   void setup(); 
+  void accept_connection();
 };
 
 #endif //_SERVER_H_

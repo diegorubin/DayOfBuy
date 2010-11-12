@@ -24,6 +24,8 @@ WinMain::WinMain()
   tblMain(2,2,false)
 {
     configs.load();
+    client.server_connect(configs.host.c_str(),atoi(configs.port.c_str()));
+
 	showed = false;
 
 	set_position(Gtk::WIN_POS_MOUSE);

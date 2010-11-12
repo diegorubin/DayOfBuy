@@ -10,7 +10,8 @@ bin_PROGRAMS = dob
 dob_SOURCES = src/main.cc \
 			  src/win-main.cc \
 			  src/dialog-preferences.cc \
-			  src/config.cc
+			  src/config.cc \
+			  src/client.cc
 
 dob_LDADD = ${DOB_LIBS}
 
