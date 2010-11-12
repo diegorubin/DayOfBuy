@@ -1,11 +1,8 @@
+#include "server.h"
+
 int main(int argc, char *argv[])
 {
-    
-	int socket = setup_server(&local);
-
-	if (listen(socket,10) < 0)
-		fatal("Erro na escuta do servidor.");
-
+	/*
 	for (;;) {
 
 		struct pollfd pfds[10];
@@ -43,6 +40,7 @@ int main(int argc, char *argv[])
 		
 	}
 
+  */
   return 0;
 }
 

@@ -49,7 +49,7 @@ CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am__dirstamp = $(am__leading_dot)dirstamp
-am_dob_server_OBJECTS = src/main.$(OBJEXT)
+am_dob_server_OBJECTS = src/server.$(OBJEXT) src/main.$(OBJEXT)
 dob_server_OBJECTS = $(am_dob_server_OBJECTS)
 dob_server_LDADD = $(LDADD)
 DEFAULT_INCLUDES = -I.
@@ -125,7 +125,7 @@ abs_srcdir = /home/diego/projects/DayOfBuy/server
 abs_top_builddir = /home/diego/projects/DayOfBuy/server
 abs_top_srcdir = /home/diego/projects/DayOfBuy/server
 ac_ct_CC = gcc
-ac_ct_CXX = g++
+ac_ct_CXX = 
 am__include = include
 am__leading_dot = .
 am__quote = 
@@ -165,7 +165,9 @@ top_builddir = .
 top_srcdir = .
 AUTOMAKE_OPTIONS = subdir-objects 
 ACLOCAL_AMFLAGS = ${ACLOCAL_FLAGS}
-dob_server_SOURCES = src/main.cc
+dob_server_SOURCES = src/server.cc \
+					 src/main.cc
+
 all: all-am
 
 .SUFFIXES:
@@ -247,6 +249,8 @@ src/$(am__dirstamp):
 src/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) src/$(DEPDIR)
 	@: > src/$(DEPDIR)/$(am__dirstamp)
+src/server.$(OBJEXT): src/$(am__dirstamp) \
+	src/$(DEPDIR)/$(am__dirstamp)
 src/main.$(OBJEXT): src/$(am__dirstamp) src/$(DEPDIR)/$(am__dirstamp)
 dob_server$(EXEEXT): $(dob_server_OBJECTS) $(dob_server_DEPENDENCIES) 
 	@rm -f dob_server$(EXEEXT)
@@ -255,11 +259,13 @@ dob_server$(EXEEXT): $(dob_server_OBJECTS) $(dob_server_DEPENDENCIES)
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
 	-rm -f src/main.$(OBJEXT)
+	-rm -f src/server.$(OBJEXT)
 
 distclean-compile:
 	-rm -f *.tab.c
 
 include src/$(DEPDIR)/main.Po
+include src/$(DEPDIR)/server.Po
 
 .cc.o:
 	depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\

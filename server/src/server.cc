@@ -2,35 +2,39 @@
 
 Server::Server(int port)
 {
-  this->port = port;
+    this->port = port;
 
-  local.sin_addr.s_addr= htonl(INADDR_ANY);
-  local.sin_port = htons(this->port);
+    local = {AF_INET};
+    local.sin_addr.s_addr= htonl(INADDR_ANY);
+    local.sin_port = htons(this->port);
+
+    setup();
 }
 
 Server::~Server()
 {
 }
 
-int Server::setup()
+void Server::setup()
 {
-    int clientsock;
-    
-    struct sockaddr_in server = { AF_INET };
-    
-    if (inet_pton(AF_INET, host, &server.sin_addr) <= 0)
-    	fatal("Falhou ao interpretar o endereço IP.");
-    
-    server.sin_port = htons(port);
-    
-    clientsock = socket(PF_INET, SOCK_STREAM, 0);
-    if(clientsock < 0 )
-    	fatal("Erro na criação do socket cliente.");
-    
-    if (connect(clientsock,(struct sockaddr*) &server, sizeof(server)) < 0)
-    	fatal("Erro ao conectar com o servidor");
-    
-    printf("*** Conexão estabelecida.\n");
-    return clientsock;
+    server_socket = socket(PF_INET, SOCK_STREAM, 0);
+	if(server_socket < 0 ){
+		cout << "Erro ao criar socket do servidor.\n";
+		exit(1);
+    }
+		
+	if (bind(server_socket,(struct sockaddr*) &local, sizeof(local)) < 0){
+		cout << "Erro na criação da porta.\n";
+		exit(2);
+    }
+	
+}
+
+void Server::start()
+{
+    if(listen(server_socket,10) < 0){
+        cout << "Erro na escuta do servidor.\n";
+        exit(3);
+    }
 }
 
