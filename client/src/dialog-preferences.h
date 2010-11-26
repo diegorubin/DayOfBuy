@@ -45,6 +45,10 @@ private:
     Entry entHost;
     Label lblPort;
     Entry entPort;
+    Label lblUser;
+    Entry entUser;
+    Label lblPasswd;
+    Entry entPasswd;
 
     // callback methods
     virtual void on_button_cancel_clicked();

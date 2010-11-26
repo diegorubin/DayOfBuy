@@ -1,9 +1,11 @@
 #include "dialog-preferences.h"
 
 DialogPreferences::DialogPreferences(Config configs)
-:   tblServer(2,2,false),
+:   tblServer(2,4,false),
     lblHost("Endereço IP: "),
-    lblPort("Porta: ")
+    lblPort("Porta: "),
+    lblUser("Nome de Usuário"),
+    lblPasswd("Senha")
 {
     this->configs = configs;
     this->configs.load();
@@ -25,11 +27,19 @@ DialogPreferences::DialogPreferences(Config configs)
     // page 1 - server
     entHost.set_text(this->configs.host);
     entPort.set_text(this->configs.port);
+    entUser.set_text(this->configs.user);
+    entPasswd.set_invisible_char('*');
+    entPasswd.set_visibility(false);
+    entPasswd.set_text(this->configs.passwd);
 
     tblServer.attach(lblHost,0,1,0,1,FILL,FILL,0,0);
     tblServer.attach(entHost,1,2,0,1,FILL,FILL,0,0);
     tblServer.attach(lblPort,0,1,1,2,FILL,FILL,0,0);
     tblServer.attach(entPort,1,2,1,2,FILL,FILL,0,0);
+    tblServer.attach(lblUser,0,1,2,3,FILL,FILL,0,0);
+    tblServer.attach(entUser,1,2,2,3,FILL,FILL,0,0);
+    tblServer.attach(lblPasswd,0,1,3,4,FILL,FILL,0,0);
+    tblServer.attach(entPasswd,1,2,3,4,FILL,FILL,0,0);
 
     // connect signals
     btnCancel->signal_clicked().connect(sigc::mem_fun(*this,&DialogPreferences::on_button_cancel_clicked));
@@ -51,6 +61,8 @@ void DialogPreferences::on_button_ok_clicked()
 {
     configs.host = entHost.get_text();
     configs.port = entPort.get_text();
+    configs.user = entUser.get_text();
+    configs.passwd = entPasswd.get_text();
     configs.save();
     delete this;
 }

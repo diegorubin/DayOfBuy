@@ -29,6 +29,8 @@ public:
     // preferences attributes
     string host;
     string port;
+    string user;
+    string passwd;
 
     // parse methods
     bool save();
