@@ -133,5 +133,10 @@ void WinMain::on_menu_edit_preferences()
 {
     dlgPreferences = new DialogPreferences(configs);
     dlgPreferences->run();
+    configs.load();
+    if(client.server_connect(configs.host.c_str(),atoi(configs.port.c_str()))){
+        connected = true;
+        set_coke_icon();
+    }
 }
 
