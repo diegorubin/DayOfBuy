@@ -4,8 +4,7 @@ Server::Server(int port)
 {
     // yes, this is a magic number
     total_clients = 40;
-    connected_clients = 0;
-
+    
     this->port = port;
 
     local = {AF_INET};
@@ -46,19 +45,19 @@ void Server::start()
     pfds[0].events = POLLIN;
 
     while(true){
-        poll(pfds, connected_clients+1, -1);
+        poll(pfds, clients.size()+1, -1);
         //accept new connection
         if(pfds[0].revents != 0){ 
-          clients[connected_clients-1] = accept_connection();
-          pfds[connected_clients].fd = clients[connected_clients-1];
-          pfds[connected_clients].events = POLLIN;
+          int new_connection = accept_connection();
+          clients.push_back(new_connection);
+          pfds[clients.size()].fd = new_connection;
+          pfds[clients.size()].events = POLLIN;
         }
     }
 }
 
 int Server::accept_connection()
 {
-    connected_clients++;
     return accept(server_socket,NULL,NULL);
 }
 

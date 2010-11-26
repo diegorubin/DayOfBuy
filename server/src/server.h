@@ -1,7 +1,6 @@
 #ifndef _SERVER_H_
 #define _SERVER_H_
 
-#include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -9,6 +8,7 @@
 #include <arpa/inet.h>
 #include <poll.h>
 #include <iostream>
+#include <list>
 
 using namespace std;
 
@@ -25,9 +25,9 @@ private:
   int i;
   int port;
   int server_socket;
-  int clients[];
   int total_clients;
-  int connected_clients;
+
+  list<int> clients;
 
   struct sockaddr_in local;
 
