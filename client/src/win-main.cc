@@ -23,9 +23,10 @@ WinMain::WinMain()
 : vbxMenu(),
   tblMain(2,2,false)
 {
+    connected = false;
     configs.load();
-    client.server_connect(configs.host.c_str(),atoi(configs.port.c_str()));
-
+    if(client.server_connect(configs.host.c_str(),atoi(configs.port.c_str())))
+        connected = true;
 	showed = false;
 
 	set_position(Gtk::WIN_POS_MOUSE);
@@ -98,6 +99,14 @@ void WinMain::set_systray(Glib::RefPtr<Gtk::StatusIcon> tray)
 	systray = tray;
 	systray->set_tooltip("Day of Buy");
 	systray->signal_activate().connect(sigc::mem_fun(*this,&WinMain::on_systray_activate));
+	if(connected)
+        set_coke_icon();
+}
+
+// methods
+void WinMain::set_coke_icon()
+{
+   systray->set_from_file("../shared/imgs/icon100.png"); 
 }
 
 // callbacks implementations

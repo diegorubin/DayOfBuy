@@ -42,6 +42,7 @@ private:
 
 	// attributes	
 	bool showed;
+	bool connected;
 	Config configs;
 	Client client;
 	Glib::RefPtr<Gtk::StatusIcon> systray;
@@ -55,6 +56,9 @@ private:
 	VBox vbxMenu;
 	
 	Table tblMain;
+
+    // methods
+    void set_coke_icon();
 
 	// callback methods
 	virtual void on_systray_activate();

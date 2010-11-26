@@ -30,7 +30,6 @@ bool Client::server_connect(const char *host, int port)
 		return false;
     }
 
-    cout << "Conexão com o servidor realizada com sucesso.\n";
 	return true;
 }
 
