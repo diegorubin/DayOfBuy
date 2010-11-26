@@ -2,6 +2,10 @@
 
 Server::Server(int port)
 {
+    // yes, this is a magic number
+    total_clients = 40;
+    connected_clients = 0;
+
     this->port = port;
 
     local = {AF_INET};
@@ -32,28 +36,29 @@ void Server::setup()
 
 void Server::start()
 {
-    if(listen(server_socket,number_of_clients) < 0){
+    if(listen(server_socket,total_clients) < 0){
         cout << "Erro na escuta do servidor.\n";
         exit(3);
     }
+    
+    struct pollfd pfds[total_clients];
+    pfds[0].fd = server_socket;
+    pfds[0].events = POLLIN;
 
     while(true){
-        struct pollfd pfds[1];
-        pfds[0].fd = server_socket;
-        pfds[0].events = POLLIN;
-
-        poll(pfds,10,-1);
-        
-        //accept connection
-        if(pfds[0].revents != 0) accept_connection();
-
+        poll(pfds, connected_clients+1, -1);
+        //accept new connection
+        if(pfds[0].revents != 0){ 
+          clients[connected_clients-1] = accept_connection();
+          pfds[connected_clients].fd = clients[connected_clients-1];
+          pfds[connected_clients].events = POLLIN;
+        }
     }
 }
 
-void Server::accept_connection()
+int Server::accept_connection()
 {
-    // retorna socket
-    accept(server_socket,NULL,NULL);
-    cout << "Conexão estabelecida com cliente.";
+    connected_clients++;
+    return accept(server_socket,NULL,NULL);
 }
 

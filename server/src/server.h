@@ -1,6 +1,7 @@
 #ifndef _SERVER_H_
 #define _SERVER_H_
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -25,13 +26,14 @@ private:
   int port;
   int server_socket;
   int clients[];
-  int number_of_clients;
+  int total_clients;
+  int connected_clients;
 
   struct sockaddr_in local;
 
   // methods
   void setup(); 
-  void accept_connection();
+  int accept_connection();
 };
 
 #endif //_SERVER_H_

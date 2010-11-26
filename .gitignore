@@ -1,6 +1,7 @@
 .deps/
 .dirstamp
 *.o
+*.swp
 client/INSTALL
 client/Makefile
 client/Makefile.in
@@ -19,8 +20,8 @@ client/install-sh
 client/missing
 client/stamp-h?
 server/install
-server/makefile
-server/makefile.in
+server/Makefile
+server/Makefile.in
 server/aclocal.m4
 server/autom4te.cache/
 server/config.h
