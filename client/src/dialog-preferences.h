@@ -28,7 +28,7 @@ using namespace Gtk;
 class DialogPreferences: public Gtk::Dialog
 {
 public:
-    DialogPreferences(Config configs);
+    DialogPreferences(Config configs,string alert);
     virtual ~DialogPreferences();
 protected:
 
@@ -38,6 +38,7 @@ private:
     Notebook notPreferences;
     Button *btnOk;
     Button *btnCancel;
+    Label lblAlert;
 
     // page 1 - server
     Table tblServer;

@@ -43,6 +43,7 @@ private:
 	// attributes	
 	bool showed;
 	bool connected;
+	string alert;
 	Config configs;
 	Client client;
 	Glib::RefPtr<Gtk::StatusIcon> systray;

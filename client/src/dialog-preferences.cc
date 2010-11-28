@@ -1,6 +1,6 @@
 #include "dialog-preferences.h"
 
-DialogPreferences::DialogPreferences(Config configs)
+DialogPreferences::DialogPreferences(Config configs, string alert)
 :   tblServer(2,5,false),
     lblHost("Endereço IP: "),
     lblPort("Porta: "),
@@ -15,7 +15,10 @@ DialogPreferences::DialogPreferences(Config configs)
 
     set_title("Preferências - Day Of Buy");
 
+    vbxPreferences->pack_start(lblAlert);
     vbxPreferences->pack_start(notPreferences);
+
+    lblAlert.set_markup("<span color='red'>"+alert+"</span>");
 
     // notebook
     notPreferences.set_border_width(10);

@@ -23,10 +23,16 @@ WinMain::WinMain()
 : vbxMenu(),
   tblMain(2,2,false)
 {
+    alert = "";
     connected = false;
     configs.load();
     if(client.server_connect(configs.host.c_str(),atoi(configs.port.c_str())))
         connected = true;
+    else{
+        alert = "Não foi possível conectar ao servidor.";
+        on_menu_edit_preferences();
+    }
+
 	showed = false;
 
 	set_position(Gtk::WIN_POS_MOUSE);
@@ -131,7 +137,7 @@ void WinMain::on_menu_file_quit()
 
 void WinMain::on_menu_edit_preferences()
 {
-    dlgPreferences = new DialogPreferences(configs);
+    dlgPreferences = new DialogPreferences(configs,alert);
     dlgPreferences->run();
     configs.load();
     if(client.server_connect(configs.host.c_str(),atoi(configs.port.c_str()))){
