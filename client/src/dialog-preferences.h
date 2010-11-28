@@ -49,6 +49,7 @@ private:
     Entry entUser;
     Label lblPasswd;
     Entry entPasswd;
+    CheckButton ckbSavePasswd;
 
     // callback methods
     virtual void on_button_cancel_clicked();

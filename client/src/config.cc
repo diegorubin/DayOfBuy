@@ -33,6 +33,7 @@ bool Config::save()
     file << "[port]" << port << "\n";
     file << "[user]" << user << "\n";
     file << "[passwd]" << passwd << "\n";
+    file << "[save_passwd]" << save_passwd << "\n";
 
     file.close();
     return true;
@@ -86,5 +87,6 @@ void Config::set_value(ATTR attr, VALUE value)
     if(!strcmp(attr,"port")) port = value;
     if(!strcmp(attr,"user")) user = value;
     if(!strcmp(attr,"passwd")) passwd = value;
+    if(!strcmp(attr,"save_passwd")) save_passwd = value;
 }
 

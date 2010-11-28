@@ -31,6 +31,7 @@ public:
     string port;
     string user;
     string passwd;
+    string save_passwd;
 
     // parse methods
     bool save();
