@@ -32,7 +32,8 @@ bool Config::save()
     file << "[host]" << host << "\n";
     file << "[port]" << port << "\n";
     file << "[user]" << user << "\n";
-    file << "[passwd]" << passwd << "\n";
+    if(save_passwd == "1")
+        file << "[passwd]" << passwd << "\n";
     file << "[save_passwd]" << save_passwd << "\n";
 
     file.close();
