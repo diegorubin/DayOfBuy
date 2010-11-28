@@ -2,6 +2,7 @@ AUTOMAKE_OPTIONS = subdir-objects
 ACLOCAL_AMFLAGS = ${ACLOCAL_FLAGS}
 bin_PROGRAMS = dob_server
 dob_server_SOURCES = src/server.cc \
+					 src/user.cc \
 					 src/main.cc
 
 #SUBDIRS = src
