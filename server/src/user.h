@@ -2,6 +2,9 @@
 #define _USER_H_
 
 #include <iostream>
+#include "database.h"
+
+extern Database *db;
 
 using namespace std;
 
@@ -10,6 +13,13 @@ public:
     User();
     virtual ~User();
 
+    //methods
+    bool create();
+
+    //sets
+    void set_name(string value);
+    void set_login(string value);
+    void set_passwd(string value);
 private:
     // attributes
     string name;

@@ -14,3 +14,17 @@ Database::~Database()
     sqlite3_close(db);
 }
 
+bool Database::execute(string sql)
+{
+    sqlite3_exec(db,sql.c_str(),NULL,NULL,cError);
+    return true;
+}
+
+char** Database::error_msg()
+{
+    char **erro;
+    erro = cError;
+    cError = NULL;
+    return cError;
+}
+

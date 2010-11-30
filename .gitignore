@@ -2,6 +2,7 @@
 .dirstamp
 *.o
 *.swp
+*.db
 client/INSTALL
 client/Makefile
 client/Makefile.in

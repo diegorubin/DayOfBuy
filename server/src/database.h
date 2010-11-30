@@ -12,8 +12,15 @@ public:
     Database();
     virtual ~Database();
 
+    // methods
+    bool execute(string sql);
+    char** error_msg();
+
 private:
+    // attributes
     sqlite3 *db;
+    char **cError;
 };
+static Database *db;
 
 #endif // _DATABASE_H_
