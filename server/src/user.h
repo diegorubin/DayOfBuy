@@ -4,11 +4,11 @@
 #include <iostream>
 #include "database.h"
 
-extern Database *db;
+extern sqlite3 *db;
 
 using namespace std;
 
-class User {
+class User : public Database {
 public:
     User();
     virtual ~User();

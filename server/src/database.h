@@ -14,13 +14,14 @@ public:
 
     // methods
     bool execute(string sql);
-    char** error_msg();
 
-private:
+    // callbacks
+    static int create_callback(void *NotUsed, int argc, char **argv, char **azColName);
+
+protected:
     // attributes
-    sqlite3 *db;
     char **cError;
 };
-static Database *db;
+static sqlite3 *db;
 
 #endif // _DATABASE_H_

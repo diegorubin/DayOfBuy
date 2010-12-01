@@ -14,7 +14,7 @@ bool User::create()
   sql.append("'" + name + "',");
   sql.append("'" + login + "',");
   sql.append("'" + passwd + "');");
-  db->execute(sql);
+  sqlite3_exec(db,sql.c_str(),create_callback,0,cError);
   return true;
 }
 

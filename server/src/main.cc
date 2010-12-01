@@ -5,9 +5,13 @@
 
 int main(int argc, char *argv[])
 {
-    db = new Database();
 
-    // teste
+    //connect to database
+    int result = sqlite3_open(DB_DIR, &db);
+    if (result) {
+        cerr << "Não foi possível abrir o banco de dados. Erro: " << sqlite3_errmsg(db);
+        exit(1);
+    }
 
     User user;
     user.set_name("Diego Rubin");
@@ -17,6 +21,7 @@ int main(int argc, char *argv[])
 
     Server server(7777);
     server.start();
+    sqlite3_close(db);
     return 0;
 }
 
