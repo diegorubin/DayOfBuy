@@ -39,6 +39,9 @@ void Server::start()
         cout << "Erro na escuta do servidor.\n";
         exit(3);
     }
+    else{
+        cout << "Servidor startado." << endl;
+    }
     
     struct pollfd pfds[total_clients];
     pfds[0].fd = server_socket;
