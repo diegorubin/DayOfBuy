@@ -21,6 +21,7 @@
 #define _WIN_PREFERENCES_H_
 
 #include <gtkmm.h>
+#include "dialog-new_user.h"
 #include "config.h"
 
 using namespace Gtk;
@@ -51,10 +52,13 @@ private:
     Label lblPasswd;
     Entry entPasswd;
     CheckButton ckbSavePasswd;
+    Button btnNewUser;
+    DialogNewUser *dlgNewUser;
 
     // callback methods
     virtual void on_button_cancel_clicked();
     virtual void on_button_ok_clicked();
+    virtual void on_button_new_user_clicked();
 };
 
 #endif // WIN_PREFERENCES_H_

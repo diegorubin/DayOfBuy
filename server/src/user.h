@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "../shared/message.h"
 #include "database.h"
 
 extern sqlite3 *db;

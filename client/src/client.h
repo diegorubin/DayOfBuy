@@ -10,6 +10,8 @@
 #include <arpa/inet.h>
 #include <poll.h>
 
+#include "../shared/message.h"
+
 using namespace std;
 
 class Client{
