@@ -6,9 +6,41 @@ DialogNewUser::DialogNewUser()
     lblLogin("Login: "),
     lblPasswd("Senha: ")
 {
+    set_title("Adicionar Novo Usuário");
 
+    VBox *vbxNewUser = this->get_vbox();
+    vbxNewUser->pack_start(tblDialog);
+    
+    entPasswd.set_invisible_char('*');
+    entPasswd.set_visibility(false);
+    
+    // buttons
+    btnCancel = add_button(Stock::CANCEL,RESPONSE_CANCEL);
+    btnOk = add_button(Stock::OK,RESPONSE_OK);
+    
+    tblDialog.attach(lblName,0,1,0,1,FILL,FILL,0,0);
+    tblDialog.attach(entName,1,2,0,1,FILL,FILL,0,0);
+    tblDialog.attach(lblLogin,0,1,1,2,FILL,FILL,0,0);
+    tblDialog.attach(entLogin,1,2,1,2,FILL,FILL,0,0);
+    tblDialog.attach(lblPasswd,0,1,2,3,FILL,FILL,0,0);
+    tblDialog.attach(entPasswd,1,2,2,3,FILL,FILL,0,0);
+
+    // connect signals
+    btnCancel->signal_clicked().connect(sigc::mem_fun(*this,&DialogNewUser::on_button_cancel_clicked));
+    btnOk->signal_clicked().connect(sigc::mem_fun(*this,&DialogNewUser::on_button_ok_clicked));
+
+    show_all();
 }
 
 DialogNewUser::~DialogNewUser()
+{
+}
+
+void DialogNewUser::on_button_cancel_clicked()
+{
+    delete this;
+}
+
+void DialogNewUser::on_button_ok_clicked()
 {
 }

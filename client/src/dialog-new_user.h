@@ -18,6 +18,13 @@ private:
     Entry entLogin;
     Label lblPasswd;
     Entry entPasswd;
+
+    Button *btnOk;
+    Button *btnCancel;
+
+    // callback methods
+    virtual void on_button_cancel_clicked();
+    virtual void on_button_ok_clicked();
 };
 
 #endif //_DIALOG_NEW_USER_H_

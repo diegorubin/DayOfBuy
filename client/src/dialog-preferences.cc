@@ -6,8 +6,7 @@ DialogPreferences::DialogPreferences(Config configs, string alert)
     lblPort("Porta: "),
     lblUser("Nome de Usuário: "),
     lblPasswd("Senha: "),
-    ckbSavePasswd("Salvar senha?"),
-    btnNewUser("Criar Novo usuário")
+    ckbSavePasswd("Salvar senha?")
 {
     this->configs = configs;
     this->configs.load();
@@ -48,12 +47,10 @@ DialogPreferences::DialogPreferences(Config configs, string alert)
     tblServer.attach(lblPasswd,0,1,3,4,FILL,FILL,0,0);
     tblServer.attach(entPasswd,1,2,3,4,FILL,FILL,0,0);
     tblServer.attach(ckbSavePasswd,0,2,4,5,FILL,FILL,0,0);
-    tblServer.attach(btnNewUser,1,2,5,6,FILL,FILL,0,0);
 
     // connect signals
     btnCancel->signal_clicked().connect(sigc::mem_fun(*this,&DialogPreferences::on_button_cancel_clicked));
     btnOk->signal_clicked().connect(sigc::mem_fun(*this,&DialogPreferences::on_button_ok_clicked));
-    btnNewUser.signal_clicked().connect(sigc::mem_fun(*this,&DialogPreferences::on_button_new_user_clicked));
 
     show_all();
 }
@@ -81,8 +78,3 @@ void DialogPreferences::on_button_ok_clicked()
     delete this;
 }
 
-void DialogPreferences::on_button_new_user_clicked()
-{
-    dlgNewUser = new DialogNewUser();
-    dlgNewUser->run();
-}

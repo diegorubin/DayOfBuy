@@ -26,6 +26,7 @@
 #include "client.h"
 
 #include "dialog-preferences.h"
+#include "dialog-new_user.h"
 
 using namespace Gtk;
 
