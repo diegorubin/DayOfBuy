@@ -65,11 +65,13 @@ private:
 	// callback methods
 	virtual void on_systray_activate();
 	// callback methods - menu
+        virtual void on_menu_file_new_user();
 	virtual void on_menu_file_quit();
 	virtual void on_menu_edit_preferences();
 
     // dialogs
     DialogPreferences *dlgPreferences;
+    DialogNewUser *dlgNewUser;
 };
 
 #endif // _WIN_MAIN_H_

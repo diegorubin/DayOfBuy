@@ -26,7 +26,7 @@ bool Client::server_connect(const char *host, int port)
     }
 
 	if (connect(client_socket,(struct sockaddr*) &server, sizeof(server)) < 0){
-		cout << "Erro ao conectar com o servidor";
+		cout << "Erro ao conectar com o servidor.\n";
 		return false;
     }
 

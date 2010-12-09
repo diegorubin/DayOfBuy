@@ -46,6 +46,7 @@ WinMain::WinMain()
 	actMenu = Gtk::ActionGroup::create();
 	
 	actMenu->add(Gtk::Action::create("FileMenu","Arquivo"));
+	actMenu->add(Gtk::Action::create("FileNewUser","Adicionar Usuário"),sigc::mem_fun(*this, &WinMain::on_menu_file_new_user));
 	actMenu->add(Gtk::Action::create("FileQuit",Gtk::Stock::QUIT),sigc::mem_fun(*this, &WinMain::on_menu_file_quit));
 	actMenu->add(Gtk::Action::create("EditMenu","Editar"));
 	actMenu->add(Gtk::Action::create("EditPreferences",Gtk::Stock::PREFERENCES),sigc::mem_fun(*this,&WinMain::on_menu_edit_preferences));
@@ -59,12 +60,13 @@ WinMain::WinMain()
 		"<ui>"
 		"	<menubar name='MenuBar'>"
 		" 		<menu action='FileMenu'>"
+		"                      <menuitem action='FileNewUser'/>"
 		" 			<separator/>"
 		" 			<menuitem action='FileQuit'/>"
 		" 		</menu>"
-		"       <menu action='EditMenu'>"
-		"           <menuitem action='EditPreferences'/>"
-		"       </menu>"
+		"               <menu action='EditMenu'>"
+		"                      <menuitem action='EditPreferences'/>"
+		"               </menu>"
 		"	</menubar>"
 		"</ui>";
 	
@@ -144,5 +146,11 @@ void WinMain::on_menu_edit_preferences()
         connected = true;
         set_coke_icon();
     }
+}
+
+void WinMain::on_menu_file_new_user()
+{
+  dlgNewUser = new DialogNewUser();
+  dlgNewUser->run();
 }
 
