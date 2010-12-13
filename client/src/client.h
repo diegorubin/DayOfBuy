@@ -21,6 +21,7 @@ public:
 
     // methods
     bool server_connect(const char *host, int port);
+    bool create_new_user(string name, string login, string passwd);
 
 private:
     // attributes

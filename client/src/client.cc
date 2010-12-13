@@ -33,3 +33,8 @@ bool Client::server_connect(const char *host, int port)
 	return true;
 }
 
+bool Client::create_new_user(string name, string login, string passwd)
+{
+    return false;
+}
+

@@ -2,6 +2,10 @@
 #define _DIALOG_NEW_USER_H_
 
 #include <gtkmm.h>
+#include "user.h"
+#include "client.h"
+
+extern Client client;
 
 using namespace Gtk;
 
@@ -11,6 +15,8 @@ public:
     DialogNewUser();
     virtual ~DialogNewUser();
 private:
+    Label lblAlert;
+
     Table tblDialog;
     Label lblName;
     Entry entName;

@@ -28,6 +28,9 @@
 #include "dialog-preferences.h"
 #include "dialog-new_user.h"
 
+extern bool connected;
+extern Client client;
+
 using namespace Gtk;
 
 class WinMain: public Gtk::Window 
@@ -43,10 +46,8 @@ private:
 
 	// attributes	
 	bool showed;
-	bool connected;
 	string alert;
 	Config configs;
-	Client client;
 	Glib::RefPtr<Gtk::StatusIcon> systray;
 
 	// main menu

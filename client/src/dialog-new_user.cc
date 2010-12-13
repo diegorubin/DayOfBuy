@@ -9,6 +9,7 @@ DialogNewUser::DialogNewUser()
     set_title("Adicionar Novo Usuário");
 
     VBox *vbxNewUser = this->get_vbox();
+    vbxNewUser->pack_start(lblAlert);
     vbxNewUser->pack_start(tblDialog);
     
     entPasswd.set_invisible_char('*');
@@ -43,4 +44,12 @@ void DialogNewUser::on_button_cancel_clicked()
 
 void DialogNewUser::on_button_ok_clicked()
 {
+    string name = entName.get_text();
+    string login = entLogin.get_text();
+    string passwd  = entPasswd.get_text();
+
+    if(client.create_new_user(name,login,passwd))
+        delete this;
+    else
+        lblAlert.set_markup("<span color='red'>Não foi possível criar o usuário</span>");
 }

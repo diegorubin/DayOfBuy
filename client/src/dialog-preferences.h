@@ -46,10 +46,6 @@ private:
     Entry entHost;
     Label lblPort;
     Entry entPort;
-    Label lblUser;
-    Entry entUser;
-    Label lblPasswd;
-    Entry entPasswd;
     CheckButton ckbSavePasswd;
 
     // callback methods

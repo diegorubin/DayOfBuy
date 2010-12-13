@@ -12,7 +12,8 @@ dob_SOURCES = src/main.cc \
 			  src/dialog-preferences.cc \
 			  src/dialog-new_user.cc \
 			  src/config.cc \
-			  src/client.cc 
+			  src/client.cc \
+			  src/user.cc
 
 dob_LDADD = ${DOB_LIBS}
 

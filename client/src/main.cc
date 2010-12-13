@@ -20,15 +20,19 @@
 #include <gtkmm.h>
 #include <iostream>
 #include "win-main.h"
+#include "client.h"
 
 #ifdef ENABLE_NLS
 #  include <libintl.h>
 #endif
 
+bool connected;
+Client client;
    
 int
 main (int argc, char *argv[])
 {
+        connected = false;
 	Gtk::Main kit(argc, argv);
 	Glib::RefPtr<Gtk::StatusIcon> systray = Gtk::StatusIcon::create_from_file("../shared/imgs/icon.png");
 	
