@@ -2,7 +2,7 @@
 #define _MESSAGE_H_
 
 struct message{
-    char action[2];
+    char action[4];
     char content[1000];
 };
 

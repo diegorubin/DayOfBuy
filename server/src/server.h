@@ -10,6 +10,8 @@
 #include <iostream>
 #include <list>
 
+#include "../shared/message.h"
+
 using namespace std;
 
 class Server {

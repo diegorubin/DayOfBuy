@@ -35,6 +35,9 @@ void Server::setup()
 
 void Server::start()
 {
+
+    list<int>::iterator it;
+
     if(listen(server_socket,total_clients) < 0){
         cout << "Erro na escuta do servidor.\n";
         exit(3);
@@ -55,6 +58,19 @@ void Server::start()
           clients.push_back(new_connection);
           pfds[clients.size()].fd = new_connection;
           pfds[clients.size()].events = POLLIN;
+        }
+
+        for(it=clients.begin(); it != clients.end(); it++){
+            int position = distance(clients.begin(),it) +1;
+            if(pfds[position].revents !=0){
+                char buffer[2000];
+                int r = recv(*it,buffer,sizeof(buffer),0);
+                if(r > 0){
+                    message *received = (message*) &buffer;
+                    cout << "Mensagem recebida de cliente" << endl;
+                    cout << "Ação requerida: " << received->action << endl;
+                }
+            }
         }
     }
 }

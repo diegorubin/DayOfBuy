@@ -9,10 +9,14 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <poll.h>
+#include <string.h>
+#include <stdio.h>
 
 #include "../shared/message.h"
 
 using namespace std;
+
+extern bool connected;
 
 class Client{
 public:

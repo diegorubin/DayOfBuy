@@ -35,6 +35,15 @@ bool Client::server_connect(const char *host, int port)
 
 bool Client::create_new_user(string name, string login, string passwd)
 {
+    message new_user;
+    sprintf(new_user.action,"aus");
+    sprintf(new_user.content,"%s|%s|%s",name.c_str(),login.c_str(),passwd.c_str());
+
+    if(connected){
+        if(send(client_socket, (char *)&new_user, sizeof(message), 0))
+            return true;
+    }
+
     return false;
 }
 
