@@ -2,6 +2,7 @@
 #define _SERVER_H_
 
 #include <stdlib.h>
+#include <string.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -9,6 +10,8 @@
 #include <poll.h>
 #include <iostream>
 #include <list>
+
+#include "user.h"
 
 #include "../shared/message.h"
 
@@ -36,7 +39,14 @@ private:
   // methods
   void setup(); 
   int accept_connection();
+  void execute_action(message received);
+  
+  // action methods
+  void create_user(char m_content[content_len]);
 };
+
+// actions
+#define CREATE_USER "aus"
 
 #endif //_SERVER_H_
 
